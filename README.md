@@ -24,26 +24,24 @@ Potential Utilizations of Scene **Graphs**
 - image generation
 
 ## Implementation
+Our implementation is 2 stages of Object Detection and then relation prediction
 
 
-
-1st Stage: Object Detection
+### 1st Stage: Object Detection
 
 - Faster RCNN (STTran)
 - Mask RCNN
-- (CYCLO)
+- Spatial Attention Graph (CYCLO)
 
-These will output the:
+These will output to the relation predictor:
 - Subject visual
 - Subject semantic
 - object visual
 - object semantic
 - sub/obj mask
 
-to represent the relation prediction
 
-
-2nd stage: Replication Predictors
+### 2nd stage: Replication Predictors
 
 Progressive:
 - Vanilla*
@@ -52,8 +50,8 @@ Batch Progressive:
 - Handcrafted Window*
 - 1D Convolution*
 - Transformer Endcoder*
-- (STTran)
-- (CYCLO)
+- Spatial(STTran)
+- Cyclic Graph Transformer (CYCLO)
 
 Hierarchical:
 - HIG
@@ -73,19 +71,30 @@ In addition, theres different level of contraints:
 ## Dataset
 Example dataset from STTran:
 
-Action Geneome
+- Action Geneome
 
-```
-|-- action_genome
-    |-- annotations   #gt annotations
-    |-- frames        #sampled frames
-    |-- videos        #original videos
-```
+  ```
+  |-- action_genome
+      |-- annotations   #gt annotations
+      |-- frames        #sampled frames
+      |-- videos        #original videos
+  ```
 
-Our dataset is built on the AeroEye dataset (CYCLO) whose number of frames is dominated by sports (Figure 4.) and of the sports mentioned Soccer has a plurality as compared to other sports like Basketball and Baseball.
+Our dataset is built on the AeroEye dataset (https://uark-cviu.github.io/projects/CYCLO/#annotations) whose number of frames is dominated by sports (Figure 4.) and of the sports mentioned Soccer has a plurality as compared to other sports like Basketball and Baseball.
+
+The Soccer is designed to get aerial coverage of the game and the annotations are provided by the aeroeye dataset to include relations between players.
 
 Soccer Relationship predicates = Cheering, Watching, Players, Competing, Passing, Scoring, Kicking, Marking
 
 ## Expirements
 
 ## Results
+
+## Papers used
+
+
+- "CYCLO : Cyclic Graph Transformer Approach to Multi-Object Relationship Modeling in Aerial Videos"
+- "Spatial-Temporal Transformer for Dynamic Scene Graph Generation"
+- "HIG: Hierarchical Interlacement Graph Approach to Scene Graph Generation in Video Understanding"
+- "Target Adaptive Context Aggregation for Video Scene Graph Generation"
+- "Panoptic Video Scene Graph Generation"
