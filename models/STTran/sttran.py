@@ -88,6 +88,7 @@ class STTran(nn.Module):
         x_semantic = torch.cat((subj_emb, obj_emb), 1)
 
         rel_features = torch.cat((x_visual, x_semantic), dim=1)
+        
         # Spatial-Temporal Transformer
         global_output, global_attention_weights, local_attention_weights = self.glocal_transformer(features=rel_features, im_idx=entry['im_idx'])
 
